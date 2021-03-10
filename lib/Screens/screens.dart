@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/Screens/Add_task.dart';
+import 'package:todo_app/Widgets/TaskList.dart';
 
 class TaskScreen extends StatelessWidget {
   @override
@@ -57,39 +58,7 @@ class TaskScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              child: ListView(
-                padding:
-                    EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 30),
-                children: [
-                  ListTile(
-                    title: Text(
-                      'Buy Milk',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                    trailing: Checkbox(value: false),
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Buy eggs',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                    trailing: Checkbox(value: false),
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Buy bread',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                    trailing: Checkbox(value: false),
-                  ),
-                ],
-              ),
+              child: Tasklist(),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(

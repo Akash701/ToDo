@@ -6,7 +6,7 @@ class TaskAdd extends StatelessWidget {
     return Container(
       color: Color(0xff757575),
       child: Container(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(30),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -22,11 +22,15 @@ class TaskAdd extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 30,
-                color: Colors.blue,
+                color: Colors.lightBlueAccent,
               ),
             ),
             TextField(
-              decoration: InputDecoration(),
+              autofocus: true,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: 20,
             ),
             TextButton(
               style: ButtonStyle(
