@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/Screens/Add_task.dart';
 import 'package:todo_app/Widgets/TaskList.dart';
+import 'package:todo_app/Model/Task.dart';
 
-class TaskScreen extends StatelessWidget {
+class TaskScreen extends StatefulWidget {
+  @override
+  _TaskScreenState createState() => _TaskScreenState();
+}
+
+class _TaskScreenState extends State<TaskScreen> {
+  String newtasktitle;
+  List<Task> tasks = [
+    Task(name: 'Buy MIlk'),
+    Task(name: 'Buy Eggs'),
+    Task(name: 'Buy Bread'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +24,12 @@ class TaskScreen extends StatelessWidget {
         backgroundColor: Colors.lightBlueAccent,
         onPressed: () {
           showModalBottomSheet(
-              context: context, builder: (context) => TaskAdd());
+              context: context,
+              builder: (context) => TaskAdd((newtasktitle) {
+                    setState(() {
+                      tasks.add(Task(name: newtasktitle));
+                    });
+                  }));
         },
       ),
       backgroundColor: Colors.lightBlueAccent,
@@ -44,7 +62,7 @@ class TaskScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '12 Tasks',
+                  '${tasks.length} Tasks',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,
@@ -58,7 +76,7 @@ class TaskScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              child: Tasklist(),
+              child: Tasklist(tasks),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
