@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/Model/Task.dart';
-import 'package:todo_app/Screens/screens.dart';
+import 'package:todo_app/Model/Task_data.dart';
+import 'package:provider/provider.dart';
 
 class TaskAdd extends StatelessWidget {
-  final Function addcallback;
-  TaskAdd(this.addcallback);
-  String newtasktitle;
   @override
   Widget build(BuildContext context) {
+    String newtasktitle;
     return Container(
       color: Color(0xff757575),
       child: Container(
@@ -46,7 +44,8 @@ class TaskAdd extends StatelessWidget {
                     MaterialStateProperty.all<Color>(Colors.lightBlueAccent),
               ),
               onPressed: () {
-                addcallback(newtasktitle);
+                Provider.of<TaskData>(context, listen: false)
+                    .addTask(newtasktitle);
                 Navigator.pop(context);
               },
               child: Text(
