@@ -9,11 +9,15 @@ class Tasklist extends StatelessWidget {
     return Consumer<TaskData>(builder: (context, taskData, child) {
       return ListView.builder(
         itemBuilder: (context, index) => Tasktile(
-            listname: taskData.tasks[index].name,
-            ischeked: taskData.tasks[index].isDone,
-            checkBox: (checkBoxSate) {
-              taskData.tasks[index].toggle();
-            }),
+          listname: taskData.tasks[index].name,
+          ischeked: taskData.tasks[index].isDone,
+          checkBox: (checkBoxSate) {
+            taskData.tsakUpdate(taskData.tasks[index]);
+          },
+          delete: () {
+            taskData.delete(taskData.tasks[index]);
+          },
+        ),
         itemCount: taskData.tasks.length,
       );
     });

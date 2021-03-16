@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class Tasktile extends StatelessWidget {
-  Tasktile({this.listname, this.ischeked, this.checkBox});
+  Tasktile({this.listname, this.ischeked, this.checkBox, this.delete});
   final String listname;
   final bool ischeked;
   final Function checkBox;
+  final Function delete;
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onLongPress: delete,
       title: Text(
         listname,
         style: TextStyle(

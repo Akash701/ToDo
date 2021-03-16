@@ -13,4 +13,14 @@ class TaskData extends ChangeNotifier {
     tasks.add(task);
     notifyListeners();
   }
+
+  void tsakUpdate(Task task) {
+    task.toggle();
+    notifyListeners();
+  }
+
+  void delete(Task task) {
+    tasks.remove(task);
+    notifyListeners();
+  }
 }
